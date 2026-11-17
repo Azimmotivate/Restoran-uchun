@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Azimmotivate — Motivatsiya kanali</title>
+<style>
+:root{--bg:#07050f;--fg:#f4f1ff;--mut:#a79fc8;--card:rgba(255,255,255,.06);--bd:rgba(255,255,255,.12);--a:#ff2d9b;--b:#7a3cff;--c:#ffb340;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#07050f}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--fg);font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;overflow-x:hidden;min-height:100vh}
+canvas#bg{position:fixed;inset:0;z-index:0;width:100%;height:100%}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);opacity:.45;z-index:0;animation:float 12s ease-in-out infinite}
+.o1{width:380px;height:380px;background:var(--b);top:-100px;left:-100px}
+.o2{width:340px;height:340px;background:var(--a);bottom:-80px;right:-80px;animation-delay:-5s}
+.o3{width:240px;height:240px;background:var(--c);top:45%;left:55%;opacity:.2;animation-delay:-8s}
+@keyframes float{50%{transform:translate(60px,-50px) scale(1.15)}}
+main{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:28px 20px 60px}
+nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:8vh}
+.logo{font-weight:800;letter-spacing:.5px}
+.logo b{background:linear-gradient(90deg,var(--a),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+.live{font-size:12px;color:var(--mut);display:flex;gap:8px;align-items:center}
+.live i{width:8px;height:8px;border-radius:50%;background:#2dff8a;box-shadow:0 0 0 0 #2dff8a;animation:pulse 1.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero{text-align:center}
+.tag{display:inline-block;padding:7px 16px;border:1px solid var(--bd);border-radius:99px;background:var(--card);font-size:13px;color:var(--mut);backdrop-filter:blur(10px);animation:up .8s both}
+h1{font-size:clamp(44px,12vw,112px);line-height:1;font-weight:900;margin:22px 0 14px;letter-spacing:-2px;animation:up .9s .1s both}
+h1 span{background:linear-gradient(110deg,var(--a),var(--b),var(--c),var(--a));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite;display:inline-block}
+@keyframes shine{to{background-position:300% 0}}
+.sub{color:var(--mut);font-size:clamp(15px,3.4vw,20px);min-height:30px;animation:up .9s .2s both}
+.sub em{color:var(--fg);font-style:normal;border-right:2px solid var(--a);padding-right:4px;animation:blink .8s step-end infinite}
+@keyframes blink{50%{border-color:transparent}}
+@keyframes up{from{opacity:0;transform:translateY(30px)}}
+.cta{margin:40px 0 10px;animation:up .9s .35s both}
+.ig{position:relative;display:inline-flex;align-items:center;gap:12px;padding:18px 38px;border-radius:99px;color:#fff;text-decoration:none;font-weight:800;font-size:18px;background:linear-gradient(120deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);background-size:250% 100%;animation:grad 4s linear infinite;transition:transform .2s;overflow:hidden;box-shadow:0 10px 40px rgba(214,41,118,.5)}
+.ig::before{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sweep 2.8s infinite}
+.ig::after{content:"";position:absolute;inset:-6px;border-radius:99px;border:2px solid rgba(214,41,118,.7);animation:ring 2s infinite;pointer-events:none}
+.ig:hover{transform:scale(1.07)}
+.ig svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2}
+@keyframes grad{to{background-position:250% 0}}
+@keyframes sweep{to{left:140%}}
+@keyframes ring{from{transform:scale(1);opacity:1}to{transform:scale(1.25);opacity:0}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:56px 0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:22px 14px;text-align:center;backdrop-filter:blur(12px);transition:transform .3s,border-color .3s}
+.card:hover{transform:translateY(-8px) rotate(-1deg);border-color:var(--a)}
+.num{font-size:clamp(26px,6vw,44px);font-weight:900;background:linear-gradient(90deg,var(--c),var(--a));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lbl{font-size:12px;color:var(--mut);margin-top:4px}
+.sec{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+@media(max-width:720px){.sec{grid-template-columns:1fr}}
+.term{background:#0d0a1c;border:1px solid var(--bd);border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(122,60,255,.25)}
+.bar{display:flex;gap:7px;padding:12px 14px;background:rgba(255,255,255,.05);align-items:center;font-size:12px;color:var(--mut)}
+.bar i{width:11px;height:11px;border-radius:50%}
+.bar i:nth-child(1){background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+pre{font:13px/1.7 ui-monospace,Menlo,Consolas,monospace;padding:16px;min-height:250px;white-space:pre-wrap;color:#d9d3ff}
+.k{color:#ff7ac6}.s{color:#9dffb0}.f{color:#7ad7ff}.c{color:#6f6a96}.o{color:#2dff8a}
+.cur{display:inline-block;width:8px;height:14px;background:var(--a);vertical-align:middle;animation:blink .8s step-end infinite}
+.quote{display:flex;flex-direction:column;justify-content:center;text-align:center;padding:28px;min-height:250px}
+.quote q{font-size:clamp(20px,4.6vw,28px);font-weight:700;line-height:1.35;quotes:none;transition:opacity .5s,transform .5s}
+.quote small{color:var(--mut);margin-top:16px;transition:opacity .5s}
+.hide{opacity:0!important;transform:translateY(12px)}
+footer{text-align:center;color:var(--mut);font-size:13px;margin-top:56px}
+.rv{opacity:0;transform:translateY(40px);transition:all .9s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<main>
+<nav><div class="logo">Azim<b>motivate</b></div><div class="live"><i></i> Kanal faol</div></nav>
+
+<section class="hero">
+<span class="tag">🔥 Motivatsiya · Intizom · Muvaffaqiyat</span>
+<h1>Azim<span>motivate</span></h1>
+<p class="sub"><em id="typed"></em></p>
+<div class="cta">
+<a class="ig" id="ig" href="https://www.instagram.com/azimmotivate/" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg>
+Instagramga o'tish</a>
+</div>
+</section>
+
+<section class="stats rv">
+<div class="card"><div class="num" data-n="100" data-s="%">0</div><div class="lbl">Motivatsiya</div></div>
+<div class="card"><div class="num" data-n="365" data-s="">0</div><div class="lbl">Kun harakat</div></div>
+<div class="card"><div class="num" data-n="1" data-s="∞">0</div><div class="lbl">Imkoniyat</div></div>
+</section>
+
+<section class="sec rv">
+<div class="term">
+<div class="bar"><i></i><i></i><i></i><span style="margin-left:8px">azim.py — Python</span></div>
+<pre id="code"></pre>
+</div>
+<div class="card quote"><q id="q"></q><small id="qa"></small></div>
+</section>
+
+<footer>© Azimmotivate · Har kuni 1% yaxshiroq bo'l 🚀</footer>
+</main>
+
+<script>
+// Fon zarrachalari
+const cv=document.getElementById('bg'),cx=cv.getContext('2d');let W,H,P=[],mx=-999,my=-999;
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:Math.min(90,W/10|0)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5}))}
+addEventListener('resize',rs);rs();
+addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY});
+(function loop(){cx.clearRect(0,0,W,H);
+for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);if(d<120){p.x+=dx/d*1.5;p.y+=dy/d*1.5}
+cx.fillStyle='rgba(255,140,220,.8)';cx.beginPath();cx.arc(p.x,p.y,1.8,0,7);cx.fill()}
+for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const d=Math.hypot(P[i].x-P[j].x,P[i].y-P[j].y);
+if(d<110){cx.strokeStyle='rgba(160,110,255,'+(1-d/110)*.4+')';cx.beginPath();cx.moveTo(P[i].x,P[i].y);cx.lineTo(P[j].x,P[j].y);cx.stroke()}}
+requestAnimationFrame(loop)})();
+
+// Yozuv animatsiyasi
+const words=["Orzularing uchun kurash.","Bugun boshla, ertaga kech bo'ladi.","Intizom — muvaffaqiyat kaliti.","Sen o'ylagandan kuchlisan."];
+const t=document.getElementById('typed');let wi=0,ci=0,del=false;
+(function type(){const w=words[wi];t.textContent=w.slice(0,ci);
+if(!del&&ci++===w.length){del=true;return setTimeout(type,1500)}
+if(del&&--ci<0){del=false;ci=0;wi=(wi+1)%words.length}
+setTimeout(type,del?30:70)})();
+
+// Python terminal animatsiyasi
+const lines=[
+'<span class="c"># azim.py</span>',
+'<span class="k">import</span> time, random','',
+'<span class="k">class</span> <span class="f">Azimmotivate</span>:',
+'    <span class="k">def</span> <span class="f">__init__</span>(self):',
+'        self.energiya = <span class="s">100</span>',
+'    <span class="k">def</span> <span class="f">harakat</span>(self):',
+'        <span class="k">while</span> self.energiya &gt; <span class="s">0</span>:',
+'            <span class="f">print</span>(<span class="s">"Davom et! 🔥"</span>)','',
+'Azimmotivate().<span class="f">harakat</span>()',
+'<span class="o">▶ Davom et! 🔥</span>',
+'<span class="o">▶ Davom et! 🔥</span>',
+'<span class="o">▶ Hech qachon taslim bo\'lma! 🚀</span>'];
+const pre=document.getElementById('code');let li=0,out='';
+function nextLine(){if(li>=lines.length){return setTimeout(()=>{li=0;out='';nextLine()},3200)}
+const ln=lines[li++];let i=0;const tmp=document.createElement('div');tmp.innerHTML=ln;const plain=tmp.textContent;
+// satrni belgi-belgi chiqarish (HTML tegi bilan birga)
+const step=Math.max(1,Math.ceil(ln.length/14));
+(function s(){i+=step;pre.innerHTML=out+ln.slice(0,Math.min(i,ln.length))+'<span class="cur"></span>';
+if(i<ln.length)setTimeout(s,40);else{out+=ln+'\n';pre.innerHTML=out+'<span class="cur"></span>';setTimeout(nextLine,li>10?500:220)}})()}
+nextLine();
+
+// Iqtiboslar
+const qs=[["Kuchli bo'lish uchun har kuni kichik qadam tashla.","Azimmotivate"],["Orzu qilish bilan emas, harakat bilan yutiladi.","Azimmotivate"],["Bugungi mehnating ertangi g'ururing.","Azimmotivate"],["Yiqilish emas, turmaslik — mag'lubiyat.","Azimmotivate"]];
+const q=document.getElementById('q'),qa=document.getElementById('qa');let qi=0;
+function showQ(){q.classList.add('hide');qa.classList.add('hide');setTimeout(()=>{q.textContent='“'+qs[qi][0]+'”';qa.textContent='— '+qs[qi][1];qi=(qi+1)%qs.length;q.classList.remove('hide');qa.classList.remove('hide')},500)}
+showQ();setInterval(showQ,4500);
+
+// Hisoblagich va ko'rinish
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('on');
+e.target.querySelectorAll('.num').forEach(n=>{const T=+n.dataset.n,S=n.dataset.s;let v=0;const id=setInterval(()=>{v+=Math.ceil(T/50);if(v>=T){v=T;clearInterval(id)}n.textContent=(S==='∞'?'':v)+(S==='∞'&&v>=T?'∞':S==='∞'?'':S)},30)});io.unobserve(e.target)}),{threshold:.2});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// Magnit tugma
+const ig=document.getElementById('ig');
+ig.addEventListener('pointermove',e=>{const r=ig.getBoundingClientRect();ig.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.15}px,${(e.clientY-r.top-r.height/2)*.25}px) scale(1.07)`});
+ig.addEventListener('pointerleave',()=>ig.style.transform='');
+</script>
+</body>
+</html>
